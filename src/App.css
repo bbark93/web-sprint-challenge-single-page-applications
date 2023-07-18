@@ -1,10 +1,45 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 32px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.img-div {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(./img/pizza-img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media (prefers-reduced-motion: no-preference) {
