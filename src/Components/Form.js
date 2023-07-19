@@ -1,8 +1,20 @@
 import React from "react";
-// We'll need a Link from 'react-router-dom'
-// import { Link } from 'react-router-dom'
 
 export default function Form(props) {
+  const { values, submit, change, disabled, errors } = props;
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(values);
+    submit()
+  };
+
+  const onChange = (evt) => {
+    const { name, value, checked, type } = evt.target;
+    const valueToUse = type === "checkbox" ? checked : value;
+    change(name, valueToUse);
+  };
+
   return (
     <div>
       <div>
@@ -12,12 +24,20 @@ export default function Form(props) {
 
       <div>
         <h2>Build Your Own Pizza</h2>
-        <form>
+        <form className="form container" onSubmit={onSubmit}>
+          <div>
+            <h2>Customer</h2>
+            <p>Required</p>
+            <label>Name
+              <input type="text" name="name" value={values.name} onChange={onChange}/>
+            </label>
+          </div>
+
           <div className="form-section">
             <h2>Choice of Size</h2>
             <p>Required</p>
             <label>
-              <select>
+              <select onChange={onChange} value={values.size} name='size'>
                 <option value="">--Select a size--</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
@@ -31,40 +51,44 @@ export default function Form(props) {
             <p>Required</p>
             <div>
               <label>
-                Original Red
                 <input
                   type="radio"
                   name="sauce"
                   value="original"
-                  // onChange={onChange}
+                  onChange={onChange}
+                  checked={values.sauce === 'original'}
                 />
+                Original Red
               </label>
               <label>
-                Garlic Ranch
                 <input
                   type="radio"
                   name="sauce"
                   value="ranch"
-                  // onChange={onChange}
+                  onChange={onChange}
+                  checked={values.sauce === 'ranch'}
                 />
+                Garlic Ranch
               </label>
               <label>
-                BBQ Sauce
                 <input
                   type="radio"
                   name="sauce"
                   value="bbq"
-                  // onChange={onChange}
+                  onChange={onChange}
+                  checked={values.sauce === 'bbq'}
                 />
+                BBQ Sauce
               </label>
               <label>
-                Spinach Alfredo
                 <input
                   type="radio"
                   name="sauce"
                   value="alfredo"
-                  // onChange={onChange}
+                  onChange={onChange}
+                  checked={values.sauce === 'alfredo'}
                 />
+                Spinach Alfredo
               </label>
             </div>
           </div>
@@ -77,8 +101,8 @@ export default function Form(props) {
                 <input
                   type="checkbox"
                   name="pepperoni"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
+                    checked={values.pepperoni}
+                  onChange={onChange}
                 />
                 Pepperoni
               </label>
@@ -86,53 +110,17 @@ export default function Form(props) {
                 <input
                   type="checkbox"
                   name="sausage"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
+                    checked={values.sausage}
+                  onChange={onChange}
                 />
                 Sausage
               </label>
               <label>
                 <input
                   type="checkbox"
-                  name="italian"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
-                />
-                Spicy Italian Sausage
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="chicken"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
-                />
-                Grilled Chicken
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="onions"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
-                />
-                Onions
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="pepper"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
-                />
-                Green Pepper
-              </label>
-              <label>
-                <input
-                  type="checkbox"
                   name="olives"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
+                    checked={values.olives}
+                  onChange={onChange}
                 />
                 Black Olives
               </label>
@@ -140,21 +128,10 @@ export default function Form(props) {
                 <input
                   type="checkbox"
                   name="pineapple"
-                  //   checked={values.hiking}
-                  //   onChange={onChange}
+                    checked={values.pineapple}
+                  onChange={onChange}
                 />
                 Pineapple
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <h2>Choice of Substitute</h2>
-            <p>Choose one</p>
-            <div>
-              <label>
-                <input type="checkbox" />
-                Gluten Free Crust (+ $1.00)
               </label>
             </div>
           </div>
@@ -165,18 +142,16 @@ export default function Form(props) {
             <div>
               <label>
                 <input
-                  value=""
-                //   onChange={onChange}
-                  name="instructions"
+                  value={values.special}
+                  onChange={onChange}
+                  name="special"
                   type="text"
                 />
               </label>
             </div>
           </div>
 
-          <label>Add to order
-            <input type='submit'/>
-          </label>
+          <button /*disabled={disabled}*/>Add to Order</button>
         </form>
       </div>
     </div>

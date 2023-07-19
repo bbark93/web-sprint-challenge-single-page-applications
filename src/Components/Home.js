@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const navigate = useNavigate();
 
-  // 👉 STEP 5 - Build a click handler that will imperatively navigate us to /items-list
-    const routeToShop = () => {
-      console.log('Submitting...')
-      navigate('pizza')
-    }
+  const routeToShop = () => {
+    console.log("Submitting...");
+    navigate("pizza");
+  };
 
   return (
     <div className="home-wrapper">
@@ -19,7 +18,7 @@ export default function Home() {
       <div>
         <h2>Food Delivery in Gotham City</h2>
         <div>
-            <h3>test</h3>
+          <h3>test</h3>
         </div>
       </div>
     </div>
