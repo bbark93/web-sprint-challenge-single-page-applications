@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 // Components used for the different routes
 import Home from './Components/Home'
 import Form from './Components/Form'
+import Submission from './Components/Submission'
 import axios from 'axios'
 import schema from './Validation/formSchema'
 import * as yup from 'yup'
@@ -34,6 +35,19 @@ const App = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors) // object
   const [disabled, setDisabled] = useState(initialDisabled)       // boolean
 
+  const postNewOrder = newOrder => {
+    axios.post('https://reqres.in/api/orders', newOrder)
+      .then(res => {
+        console.log(res.data);
+        setOrder([res.data, ...order])
+        setFormValues(initialFormValues)
+      })
+      .catch(err => {
+        console.log(err)
+        debugger
+      })
+  }
+
   const validate = (name, value) => {
     yup.reach(schema, name)
       .validate(value)
@@ -60,8 +74,7 @@ const App = () => {
       pineapple: formValues.pineapple,
       special: formValues.special.trim(),
     }
-    // postNewOrder(newOrder)
-    console.log(newOrder);
+    postNewOrder(newOrder)
   } 
 
   useEffect(() => {
@@ -89,6 +102,7 @@ const App = () => {
                                         disabled={disabled}
                                         errors={formErrors}
                                       />} />
+        <Route path='pizza/submisson' element={<Submission/>}/>
       </Routes>
     </div>
   );

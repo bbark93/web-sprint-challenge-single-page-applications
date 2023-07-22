@@ -1,11 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Form(props) {
   const { values, submit, change, disabled, errors } = props;
+  const navigate = useNavigate();
+
+  const routeToSubmit = () => {
+    console.log("Submitting...");
+    navigate("submisson");
+  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log(values);
+    routeToSubmit();
     submit()
   };
 
