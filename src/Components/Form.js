@@ -32,7 +32,7 @@ export default function Form(props) {
           <div>{errors.sauce}</div>
       </div>
 
-        <form className="form container" onSubmit={onSubmit}>
+        <form className="form container" onSubmit={onSubmit} id='pizza-form'>
           <div>
             <h2>Customer</h2>
             <p>Required</p>
@@ -159,7 +159,7 @@ export default function Form(props) {
             </div>
           </div>
 
-          <button disabled={disabled}>Add to Order</button>
+          <button id="order-button" disabled={disabled}>Add to Order</button>
         </form>
     </div>
   )
