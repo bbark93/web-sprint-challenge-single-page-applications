@@ -24,6 +24,14 @@ export default function Form(props) {
 
       <div>
         <h2>Build Your Own Pizza</h2>
+      </div>
+
+      <div className='errors'>
+          <div>{errors.name}</div>
+          <div>{errors.size}</div>
+          <div>{errors.sauce}</div>
+      </div>
+
         <form className="form container" onSubmit={onSubmit}>
           <div>
             <h2>Customer</h2>
@@ -151,9 +159,8 @@ export default function Form(props) {
             </div>
           </div>
 
-          <button /*disabled={disabled}*/>Add to Order</button>
+          <button disabled={disabled}>Add to Order</button>
         </form>
-      </div>
     </div>
-  );
+  )
 }
