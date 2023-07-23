@@ -45,7 +45,7 @@ export default function Form(props) {
             <h2>Customer</h2>
             <p>Required</p>
             <label>Name
-              <input type="text" name="name" value={values.name} onChange={onChange}/>
+              <input id="name-input" type="text" name="name" value={values.name} onChange={onChange}/>
             </label>
           </div>
 
@@ -53,7 +53,7 @@ export default function Form(props) {
             <h2>Choice of Size</h2>
             <p>Required</p>
             <label>
-              <select onChange={onChange} value={values.size} name='size'>
+              <select id="size-dropdown" onChange={onChange} value={values.size} name='size'>
                 <option value="">--Select a size--</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
@@ -158,6 +158,7 @@ export default function Form(props) {
             <div>
               <label>
                 <input
+                id="special-text"
                   value={values.special}
                   onChange={onChange}
                   name="special"
