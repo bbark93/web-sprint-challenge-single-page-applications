@@ -40,13 +40,13 @@ describe('Form App', () => {
             pineappleCB().check().should('be.checked')
         })
 
-        // it('can submit inputs and input appears on DOM', () => {
-        //     nameInput().type('BBark93')
-        //     emailInput().type('bbark93@gmail.com')
-        //     pwInput().type('password')
-        //     submitBtn().click()
-        //     cy.contains(/bbark93@gmail.com/).should('exist')
-        // })
+        it('can submit inputs', () => {
+            nameInput().type('Brandon')
+            cy.get("select").select(2)
+            cy.get('[type="radio"]').check()
+            cy.get('button[id=order-button]').click()
+            cy.contains(/Congrats! Pizza is on the way!/).should('exist')
+        })
     })
 
 })
