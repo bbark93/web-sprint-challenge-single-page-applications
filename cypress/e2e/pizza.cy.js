@@ -33,11 +33,12 @@ describe('Form App', () => {
                 .should('have.value', 'Brandon')
         })
 
-        // it('can check tos checkbox', () => {
-        //     cy.get(`input[type="checkbox"]`)
-        //         .check()
-        //         .should('be.checked')
-        // })
+        it('can check multiple toppings', () => {
+            pepperoniCB().check().should('be.checked')
+            sausageCB().check().should('be.checked')
+            olivesCB().check().should('be.checked')
+            pineappleCB().check().should('be.checked')
+        })
 
         // it('can submit inputs and input appears on DOM', () => {
         //     nameInput().type('BBark93')
