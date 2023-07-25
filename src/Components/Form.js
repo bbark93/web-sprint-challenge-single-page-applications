@@ -159,10 +159,10 @@ export default function Form(props) {
               <label>
                 <input
                 id="special-text"
+                  type="text"
+                  name="special"
                   value={values.special}
                   onChange={onChange}
-                  name="special"
-                  type="text"
                 />
               </label>
             </div>

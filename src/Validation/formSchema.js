@@ -16,6 +16,8 @@ const formSchema = yup.object().shape({
   sausage: yup.boolean(),
   olives: yup.boolean(),
   pineapple: yup.boolean(),
+  special: yup
+    .string(),
 })
 
 export default formSchema
